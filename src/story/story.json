@@ -1,0 +1,84 @@
+{
+  "start": "scene-1",
+  "scenes": [
+    {
+      "id": "scene-1",
+      "bg": { "type": "image", "src": "/assets/scene-1.svg" },
+      "overlays": [
+        {
+          "name": "窗边暗门",
+          "trigger": { "rect": [34, 32, 53, 55] },
+          "items": [
+            {
+              "image": "/assets/hover-bar.svg",
+              "rect": [20, 8, 84, 19]
+            },
+            {
+              "image": "/assets/hover-door.svg",
+              "rect": [58, 24, 70, 44],
+              "events": [{ "type": "goto", "target": "scene-2" }]
+            }
+          ]
+        }
+      ],
+      "hotspots": [
+        {
+          "name": "去场景2（继承背景）",
+          "rect": [4, 62, 30, 92],
+          "events": [{ "type": "goto", "target": "scene-2" }]
+        },
+        {
+          "name": "去场景3（视频背景）",
+          "rect": [70, 62, 96, 92],
+          "events": [{ "type": "goto", "target": "scene-3" }]
+        }
+      ]
+    },
+    {
+      "id": "scene-2",
+      "hotspots": [
+        {
+          "name": "打开抽屉（自定义回调）",
+          "rect": [36, 38, 64, 66],
+          "events": [{ "type": "custom", "name": "openDrawer" }]
+        },
+        {
+          "name": "返回上一幕",
+          "rect": [2, 2, 16, 12],
+          "events": [{ "type": "back" }]
+        }
+      ]
+    },
+    {
+      "id": "scene-3",
+      "bg": { "type": "video", "src": "/assets/scene-3.mp4", "muted": true, "loop": false },
+      "hotspots": [
+        {
+          "name": "去场景4（继承视频最后一帧）",
+          "rect": [68, 76, 96, 94],
+          "events": [{ "type": "goto", "target": "scene-4" }]
+        },
+        {
+          "name": "重播视频",
+          "rect": [4, 76, 32, 94],
+          "events": [{ "type": "custom", "name": "replayVideo" }]
+        }
+      ]
+    },
+    {
+      "id": "scene-4",
+      "hotspots": [
+        {
+          "name": "重新开始",
+          "rect": [34, 78, 66, 94],
+          "events": [{ "type": "restart" }]
+        },
+        {
+          "name": "返回上一幕",
+          "rect": [2, 2, 16, 12],
+          "events": [{ "type": "back" }]
+        }
+      ]
+    }
+  ]
+}
